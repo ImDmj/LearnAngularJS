@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.2/angular.min.js"></script>
+    <script src="myscript.js"></script>
+    <title>ng-repeat</title>
+</head>
+<body ng-app="myModule">
+
+    <!--  Simple ng-repeat -->
+    <div ng-controller="myController">
+        <table>
+            <thead>
+                <tr>First Name</tr>
+                <tr>Last Name</tr>
+                <tr>Gender</tr>
+                <tr>Salary</tr>
+            </thead>
+        </table>
+        <br><br>
+        <table>
+            <!--for every employee in model(collection) employee-->
+            <tr ng-repeat="employee in employee"> 
+                <td>{{employee.firstname}}</td>
+                <td>{{employee.lastname}}</td>
+                <td>{{employee.gender}}</td>
+                <td>{{employee.salary}}</td>
+            </tr>
+        </table>
+    </div>
+
+    <!--  nested ng-repeat along with index calculations.-->
+    <div ng-controller="myController">
+        <ul>
+            <li ng-repeat="country in countries" ng-init="parentIndex=$index">
+                {{country.name}}  Index - {{$index}}
+                <ul>
+                    <li ng-repeat="city in country.cities">
+                            {{city.name}} ParentIndex - {{$parent.$index}} {{parentIndex}}, Index -{{$index}}
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+</body>
+</html>

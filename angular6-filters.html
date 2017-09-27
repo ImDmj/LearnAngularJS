@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.2/angular.min.js"></script>
+    <script src="myscript.js"></script>
+    <link rel="stylesheet" href="style.css">
+    <title>Filters</title>
+</head>
+<body ng-app="myModule">
+    <div ng-controller="myController">
+       Rows to Display <input type="number"step="1"min="1" max="5" ng-model="rowLimit">
+       <br><br>
+       <table>
+           <thead>
+               <tr>
+                   <th>Name</th>
+                   <th>D.O.B</th>
+                   <th>Gender</th>
+                   <th>Salary(number)</th>
+                   <th>Salary(currency)</th>
+               </tr>
+           </thead>
+           <tbody>
+               <!--limitTo:3 shows 3 rows from beginning, 
+                   limitTo:3:2 shows 3 rows starting from 2nd indexed data.
+                   limitTo:rowLimit rowlimit property is used as parameter to limit, a change in the textbox value
+                           dynamically changes the rows in the table.  -->
+               <tr ng-repeat="emp in employee | limitTo:rowLimit">
+                   <td>{{emp.name | uppercase}}</td>
+                   <td>{{emp.dateofbirth | date: "dd/MM/yyyy"}}</td>
+                   <td>{{emp.gender | lowercase}}</td>
+                   <td>{{emp.salary | number:2}}</td>
+                   <td>{{emp.salary |currency :"£":1}}</td>
+               </tr>
+           </tbody>
+       </table>
+    </div>
+</body>
+</html>

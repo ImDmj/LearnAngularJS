@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.2/angular.min.js"></script>
+    <script src="myscript.js"></script>
+    <title>Two way binding</title>
+</head>
+<body ng-app="myModule">
+    <div ng-controller="myController">
+        <input type="text" ng-model="message">
+        <br><br>
+        {{message}}
+    </div>
+
+    <br><br>
+
+    <!--A model with the name greeting is created here and whatever we type in the textbox is stored 
+        in that and the binding expression updates the view-->
+    <div ng-controller="myController">
+        <p>Type in the textbox below</p>
+        <input type="text" ng-model="greeting">
+        <br><br>
+        {{greeting}}
+    </div>
+
+    <!--Working with Complex data
+    This shows how we dont have to write any code to move form data into a model, a good advantage of 2 way databinding-->
+    <div ng-controller="myController">
+        <table>
+            <tr>
+                <td>First Name</td>
+                <td><input type="text" ng-model="employee.firstname"></td>
+            </tr>
+            <tr>
+                <td>Last Name</td>
+                <td><input type="text" ng-model="employee.lastname"></td>
+            </tr>
+            <tr>
+                <td>Gender</td>
+                <td><input type="text" ng-model="employee.gender"></td>
+            </tr>
+        </table>
+        <br><br>
+        <table>
+            <tr>
+                <td>First Name</td>
+                <td>{{employee.firstname}}</td>
+            </tr>
+            <tr>
+                <td>Last Name</td>
+                <td>{{employee.lastname}}</td>
+            </tr>
+            <tr>
+                <td>Gender</td>
+                <td>{{employee.gender}}</td>
+            </tr>
+        </table>
+    </div>
+</body>
+</html>
