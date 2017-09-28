@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.2/angular.min.js"></script>
+    <script src="myscript.js"></script>
+    <link rel="stylesheet" href="style.css">
+    <title>Sorting</title>
+</head>
+<body ng-app="myModule">
+    <div ng-controller="myController">
+       <!-- Options to sort the table by. sortcolumn property is used in controller and ng-model both-->
+       <!--OrderBy : <select ng-model="sortColumn">
+                    <option value="name">Name Asc</option>
+                    <option value="gender">Gender Asc</option>
+                    <option value="dataeofbirth">DOB Asc</option>
+                    <option value="-salary">Salary Desc</option>
+                </select>
+            -->
+       <table>
+           <thead>
+               <tr>
+                   <th ng-click="sortData('name')">
+                       Name <div ng-class="getSortClass('name')"></div></th>
+                   <th ng-click="sortData('dateofbirth')">
+                       D.O.B <div ng-class="getSortClass('dateofbirth')"></div></th>
+                   <th ng-click="sortData('gender')">
+                       Gender <div ng-class="getSortClass('gender')"></div></th>
+                   <th ng-click="sortData('salary')">
+                       Salary <div ng-class="getSortClass('salary')"></div></th>
+               </tr>
+           </thead>
+           <tbody>
+               <!-- orderBy :'name' : true"    z -> a
+                    orderBy :'name' : false"   a -> z
+                    orderBy : '-name' z -> a
+                    orderBy : '-name' a -> z
+                -->
+               <tr ng-repeat="emp in employee | orderBy : sortColumn : reverseSort">
+                   <td>{{emp.name | uppercase}}</td>
+                   <td>{{emp.dateofbirth | date: "dd/MM/yyyy"}}</td>
+                   <td>{{emp.gender }}</td>
+                   <td>{{emp.salary }}</td>
+               </tr>
+           </tbody>
+       </table>
+    </div>
+</body>
+</html>

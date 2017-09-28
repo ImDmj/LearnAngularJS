@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.2/angular.min.js"></script>
+    <script src="myscript.js"></script>
+    <!-- Created a custom filter named gender and put it in a different file. myscript.js has all controllers and custom.js
+    has filter.-->
+    <script src="custom.js"></script>
+    <link rel="stylesheet" href="style.css">
+    <title>Custom Filter</title>
+</head>
+<body ng-app="myModule">
+        <div ng-controller="myController">
+           <br><br>
+           <table>
+               <thead>
+                   <tr>
+                       <th>Name</th>
+                       <th>Gender</th>
+                       <th>Salary</th>
+                   </tr>
+               </thead>
+               <tbody>
+
+                   <tr ng-repeat="emp in employee ">
+                       <td>{{emp.name}}</td>
+                       <td>{{emp.gender| gender}}</td>
+                       <td>{{emp.salary}}</td>
+                   </tr>
+               </tbody>
+           </table>
+        </div>
+    </body>
+</html>

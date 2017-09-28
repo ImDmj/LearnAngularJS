@@ -144,6 +144,7 @@ var myapp=angular
 - pipe(|) character is used to apply filter
   {{expression | filterName:parameter}}
 */
+/*
 var myapp=angular
         .module("myModule",[])
         .controller("myController",function($scope) {
@@ -157,3 +158,106 @@ var myapp=angular
             $scope.employee=employees;
             $scope.rowLimit=3;
         });
+*/
+// -----------------------//angular7-sorting.html ------------------------------
+/*
+orderBy filter is used
+{{orderBy-expression|orderBy:expression:reverse}}
+one way to sort data in ascending order is to set reverse to false and for descending set reverse to true
+other way is to use + for ascending and - for descending with column name
+ */
+/*
+var myapp=angular
+        .module("myModule",[])
+        .controller("myController",function($scope) {
+            var employees=[
+                {name:"Ben",dateofbirth:new Date("November 23,1990"),gender:"Male", salary:50000.788},
+                {name:"Jody",dateofbirth:new Date("october 05,1989"),gender:"Female", salary:58000},
+                {name:"Shawn",dateofbirth:new Date("August 12,1992"),gender:"Male", salary:57804},
+                {name:"Nancy",dateofbirth:new Date("December 31,1997"),gender:"Female", salary:50288},
+                {name:"Jimmy",dateofbirth:new Date("March 24,1991"),gender:"Male", salary:52787}
+            ];
+            $scope.employee=employees;
+            $scope.sortColumn="name";
+            $scope.reverseSort=false; //property with boolean value
+            
+            //function to give sort facility
+            $scope.sortData= function (column) {
+                $scope.reverseSort= ($scope.sortColumn==column) ? !$scope.reverseSort : false
+                $scope.sortColumn=column;
+            }
+            $scope.getSortClass= function (column) {
+                if ($scope.sortColumn==column) {
+                    return $scope.reverseSort ? 'arrow-down':'arrow-up'
+                }
+                return '';
+            }
+        });
+*/
+// -----------------------//angular8-searchFiler.html ------------------------------
+/*
+var app = angular
+        .module("myModule",[])
+        .controller("myController",function($scope){
+            var employees = [
+                {name:"Sara",gender:"Female",salary:25140,city:"NYC"},
+                {name:"Tania",gender:"Female",salary:24821,city:"Chicago"},
+                {name:"Harry",gender:"Male",salary:54413,city:"Dallas"},
+                {name:"Jack",gender:"Male",salary:46584,city:"IowaCity"},
+                {name:"Linda",gender:"Female",salary:76584,city:"Jersey"}
+            ];
+        $scope.employee = employees ;
+
+        //Search by certain item 
+        $scope.search = function(item) {
+            // if we did not enter any text then it will be undefined,if we want to show table entries then it has to return true.
+            if ($scope.searchText == undefined ) {
+                return true;
+            }
+            else {
+                if (item.name.toLowerCase().indexOf($scope.searchText.toLowerCase()) != -1 || 
+                    item.city.toLowerCase().indexOf($scope.searchText.toLowerCase()) != -1){
+                    return true;
+                }
+            }
+            return false;
+        }
+    });
+*/
+// -----------------------//angular9-customFiler.html ------------------------------
+/*
+Custom filter - a function that returns function. to create custom filter use the filter function
+*/
+/*
+var filterApp = angular
+        .module("myModule",[])
+        .controller("myController",function($scope){
+            var employees = [
+                {name:"Sara",gender:1,salary:25140,city:"NYC"},
+                {name:"Tania",gender:2,salary:24821,city:"Chicago"},
+                {name:"Harry",gender:1,salary:54413,city:"Dallas"},
+                {name:"Jack",gender:3,salary:46584,city:"IowaCity"},
+                {name:"Linda",gender:2,salary:76584,city:"Jersey"}
+            ];
+        $scope.employee = employees ;
+});
+*/
+
+// -----------------------//angular10-ng-hide&ng-show.html ------------------------------
+/*
+ng-hide and ng-show are used to control the visibility of the html elements.
+*/
+/*
+var app = angular
+        .module("myModule",[])
+        .controller("myController",function($scope){
+            var employees = [
+                {name:"Sara",gender:"Female",salary:25140,city:"NYC"},
+                {name:"Tania",gender:"Female",salary:24821,city:"Chicago"},
+                {name:"Harry",gender:"Male",salary:54413,city:"Dallas"},
+                {name:"Jack",gender:"Male",salary:46584,city:"IowaCity"},
+                {name:"Linda",gender:"Female",salary:76584,city:"Jersey"}
+            ];
+        $scope.employee = employees ;
+});
+*/

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.2/angular.min.js"></script>
+    <script src="myscript.js"></script>
+    <link rel="stylesheet" href="style.css">
+    <title>Searching</title>
+</head>
+<body ng-app="myModule">
+        <div ng-controller="myController">
+            <!--Simple Search using city attribute.Remove city from ng-model and it will search in whole table
+                exactMatch will only give results if it finds the exact element-->
+            Search: 
+            <!--<input type="text" placeholder="Search Name" ng-model="searchText.name">
+            <input type="text" placeholder="Search City" ng-model="searchText.city">
+            <input type="checkbox" ng-model="exactMatch"> with filter:searchText:exactMatch Exact Match
+            -->
+            <input type="text" placeholder="Search Name and city" ng-model="searchText">
+           <br><br>
+           <table>
+               <thead>
+                   <tr>
+                       <th>Name</th>
+                       <th>Gender</th>
+                       <th>Salary</th>
+                       <th>City</th>
+                   </tr>
+               </thead>
+               <tbody>
+
+                   <tr ng-repeat="emp in employee | filter:search">
+                       <td>{{emp.name}}</td>
+                       <td>{{emp.gender}}</td>
+                       <td>{{emp.salary}}</td>
+                       <td>{{emp.city}}</td>
+                   </tr>
+               </tbody>
+           </table>
+        </div>
+    </body>
+</html>

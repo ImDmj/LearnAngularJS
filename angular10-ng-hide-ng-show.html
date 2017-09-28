@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.2/angular.min.js"></script>
+    <script src="myscript.js"></script>
+    <link rel="stylesheet" href="style.css">
+    <title>ng-hide & ng-show</title>
+    <!-- ng-hide and ng-show both can be used to work in same way. when using we must use ! to reverse the action-->
+</head>
+<body ng-app="myModule">
+        <div ng-controller="myController">
+           <input type="checkbox" ng-model="salary">Hide Salary
+           <br><br>
+           <table>
+               <thead>
+                   <tr>
+                       <th>Name</th>
+                       <th>Gender</th>
+                       <th>City</th>
+                       <!-- <th ng-show="!salary">Salary</th> -->
+                       <th ng-hide="salary">Salary</th> <!--Hides the column-->
+                       <th ng-show="salary">Salary</th> <!--Shows the column-->
+                   </tr>
+               </thead>
+               <tbody>
+                   <tr ng-repeat="emp in employee ">
+                       <td>{{emp.name}}</td>
+                       <td>{{emp.gender}}</td>
+                       <td>{{emp.city}}</td>
+                       <!--<td ng-hide="hideSalary">{{emp.salary}}</td>-->
+                       <td ng-show="!salary">{{emp.salary}}</td> <!--Hides the column-->
+                       <td ng-show="salary">{{emp.salary}}</td>  <!--Shows the column-->
+                       <td ng-show="salary">#####</td>   <!--Masks the column with #-->
+                   </tr>
+               </tbody>
+           </table>
+        </div>
+    </body>
+</html>
+
